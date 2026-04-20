@@ -96,7 +96,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: focusedField === id ? 'var(--accent)' : 'var(--muted)',
-                width: '60px',
+                width: '80px',
                 flexShrink: 0,
                 fontWeight: 500,
                 transition: 'color 0.15s ease',

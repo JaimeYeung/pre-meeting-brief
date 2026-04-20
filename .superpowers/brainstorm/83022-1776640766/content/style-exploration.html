@@ -1,0 +1,480 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&family=Sora:wght@300;400;600;700&family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
+.explore-header {
+  margin-bottom: 32px;
+}
+.explore-header h2 { margin-bottom: 6px; }
+
+.directions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.direction-card {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+.direction-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+}
+.direction-card.selected {
+  border-color: var(--accent);
+}
+
+.direction-label {
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.direction-label strong { font-size: 13px; }
+.direction-label span { font-size: 11px; opacity: 0.6; }
+
+/* ── DIRECTION A: Intelligence Brief ── */
+.mockup-a {
+  background: #f0ead8;
+  padding: 24px 20px 20px;
+  font-family: 'Source Serif 4', Georgia, serif;
+  min-height: 320px;
+  position: relative;
+}
+.mockup-a .masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 3px solid #1a2e1a;
+  border-bottom: 1px solid #1a2e1a;
+  padding: 6px 0;
+  margin-bottom: 20px;
+}
+.mockup-a .masthead-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #1a2e1a;
+  letter-spacing: -0.5px;
+}
+.mockup-a .masthead-meta {
+  font-size: 9px;
+  color: #5a6b5a;
+  text-align: right;
+  line-height: 1.6;
+  font-family: 'DM Sans', sans-serif;
+}
+.mockup-a .headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2e1a;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  max-width: 90%;
+}
+.mockup-a .dossier-form {
+  border: 1px solid #b5a98a;
+  border-top: 3px solid #c8a84b;
+  padding: 14px;
+  background: #faf7ef;
+}
+.mockup-a .dossier-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0;
+  border-bottom: 1px solid #ddd5be;
+  padding: 6px 0;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+}
+.mockup-a .dossier-row:last-child { border-bottom: none; }
+.mockup-a .dossier-label {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8a7a5a;
+  font-weight: 500;
+}
+.mockup-a .dossier-value {
+  font-size: 11px;
+  color: #1a2e1a;
+  font-style: italic;
+}
+.mockup-a .dossier-value.empty {
+  color: #b5a98a;
+  font-style: normal;
+}
+.mockup-a .gold-stamp {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #c8a84b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 7px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c8a84b;
+  text-align: center;
+  line-height: 1.4;
+}
+.mockup-a .generate-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 9px;
+  background: #1a2e1a;
+  color: #c8a84b;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ── DIRECTION B: Signal (Precision Minimal) ── */
+.mockup-b {
+  background: #fefcf8;
+  padding: 28px 20px;
+  font-family: 'Sora', sans-serif;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.mockup-b .b-eyebrow {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #9a8f7e;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.mockup-b .b-headline {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0a0f1a;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 6px;
+}
+.mockup-b .b-headline em {
+  font-style: normal;
+  color: #d4860a;
+}
+.mockup-b .b-sub {
+  font-size: 11px;
+  color: #9a8f7e;
+  font-weight: 300;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+.mockup-b .b-form {
+  border: 1.5px solid #e8e2d6;
+  padding: 16px;
+  background: #fff;
+  flex: 1;
+}
+.mockup-b .b-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #f0ece4;
+  padding: 7px 0;
+}
+.mockup-b .b-input-row:last-of-type { border-bottom: none; }
+.mockup-b .b-num {
+  font-size: 9px;
+  color: #d4860a;
+  font-weight: 600;
+  width: 14px;
+  flex-shrink: 0;
+}
+.mockup-b .b-label-small {
+  font-size: 9px;
+  color: #c0b9ac;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 55px;
+  flex-shrink: 0;
+}
+.mockup-b .b-val {
+  font-size: 11px;
+  color: #0a0f1a;
+  font-weight: 300;
+}
+.mockup-b .b-val.placeholder { color: #d0c9bc; }
+.mockup-b .b-btn {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mockup-b .b-btn-main {
+  padding: 9px 20px;
+  background: #0a0f1a;
+  color: #fefcf8;
+  font-family: 'Sora', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+}
+.mockup-b .b-btn-hint {
+  font-size: 9px;
+  color: #c0b9ac;
+}
+
+/* ── DIRECTION C: Pulse (Dark, High-energy) ── */
+.mockup-c {
+  background: #111318;
+  padding: 22px 20px;
+  font-family: 'Manrope', sans-serif;
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+}
+.mockup-c::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,92,58,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mockup-c .c-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,92,58,0.12);
+  border: 1px solid rgba(255,92,58,0.25);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 9px;
+  color: #ff5c3a;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+.mockup-c .c-tag::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: #ff5c3a;
+  border-radius: 50%;
+}
+.mockup-c .c-headline {
+  font-size: 22px;
+  font-weight: 800;
+  color: #f0ede8;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+.mockup-c .c-headline span {
+  color: #ff5c3a;
+}
+.mockup-c .c-input-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.mockup-c .c-input {
+  background: #1c1f26;
+  border: 1px solid #2c2f38;
+  padding: 9px 12px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  color: #f0ede8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mockup-c .c-input-label {
+  font-size: 8px;
+  color: #5a5f6e;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 48px;
+  flex-shrink: 0;
+}
+.mockup-c .c-input-val {
+  font-size: 10px;
+  color: #c8c4bc;
+}
+.mockup-c .c-input-val.empty { color: #3c404a; }
+.mockup-c .c-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+.mockup-c .c-btn {
+  padding: 10px 18px;
+  background: #ff5c3a;
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.mockup-c .c-stats {
+  display: flex;
+  gap: 14px;
+}
+.mockup-c .c-stat {
+  font-size: 8px;
+  color: #5a5f6e;
+  line-height: 1.5;
+}
+.mockup-c .c-stat strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f0ede8;
+}
+
+/* Select interaction */
+.direction-card { cursor: pointer; }
+.direction-card.selected .direction-label { background: oklch(0.55 0.2 250 / 0.15); }
+.select-btn {
+  margin-top: 8px;
+  padding: 5px 14px;
+  font-size: 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.select-btn:hover { border-color: var(--accent); color: var(--accent); }
+</style>
+
+<div class="explore-header">
+  <h2>3 Landing Page Directions</h2>
+  <p class="subtitle">Each direction has a distinct personality — click to select your preference</p>
+</div>
+
+<div class="directions-grid">
+
+  <!-- DIRECTION A -->
+  <div class="direction-card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="mockup-a">
+      <div class="gold-stamp">AI<br>INTEL</div>
+      <div class="masthead">
+        <div class="masthead-title">Brief&nbsp;&nbsp;·&nbsp;&nbsp;Intel</div>
+        <div class="masthead-meta">EDITION NO. 001<br>GTM INTELLIGENCE</div>
+      </div>
+      <div class="headline">Pre-meeting intelligence,<br>prepared in seconds.</div>
+      <div class="dossier-form">
+        <div class="dossier-row">
+          <span class="dossier-label">Company</span>
+          <span class="dossier-value empty">Enter target company</span>
+        </div>
+        <div class="dossier-row">
+          <span class="dossier-label">Contact</span>
+          <span class="dossier-value empty">Full name</span>
+        </div>
+        <div class="dossier-row">
+          <span class="dossier-label">Title</span>
+          <span class="dossier-value empty">Role / position</span>
+        </div>
+      </div>
+      <button class="generate-btn">Generate Intelligence Brief →</button>
+    </div>
+    <div class="direction-label">
+      <strong>A — "Dossier"</strong>
+      <span>Editorial · Newspaper · Cream + Forest Green</span>
+    </div>
+  </div>
+
+  <!-- DIRECTION B -->
+  <div class="direction-card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="mockup-b">
+      <div class="b-eyebrow">SDR Intelligence Tool</div>
+      <div class="b-headline">Know before<br>you <em>walk in.</em></div>
+      <div class="b-sub">Real-time research brief for every prospect.<br>Generated in &lt;15 seconds.</div>
+      <div class="b-form">
+        <div class="b-input-row">
+          <span class="b-num">01</span>
+          <span class="b-label-small">Company</span>
+          <span class="b-val placeholder">e.g. Salesforce</span>
+        </div>
+        <div class="b-input-row">
+          <span class="b-num">02</span>
+          <span class="b-label-small">Contact</span>
+          <span class="b-val placeholder">Full name</span>
+        </div>
+        <div class="b-input-row">
+          <span class="b-num">03</span>
+          <span class="b-label-small">Title</span>
+          <span class="b-val placeholder">VP Sales, CTO…</span>
+        </div>
+      </div>
+      <div class="b-btn">
+        <button class="b-btn-main">Generate Brief</button>
+        <span class="b-btn-hint">← takes ~12s</span>
+      </div>
+    </div>
+    <div class="direction-label">
+      <strong>B — "Signal"</strong>
+      <span>Precision Minimal · Warm White + Amber</span>
+    </div>
+  </div>
+
+  <!-- DIRECTION C -->
+  <div class="direction-card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="mockup-c">
+      <div class="c-tag">AI-powered · Real-time data</div>
+      <div class="c-headline">Every meeting.<br><span>Fully loaded.</span></div>
+      <div class="c-input-stack">
+        <div class="c-input">
+          <span class="c-input-label">Company</span>
+          <span class="c-input-val empty">Target company name</span>
+        </div>
+        <div class="c-input">
+          <span class="c-input-label">Contact</span>
+          <span class="c-input-val empty">Prospect full name</span>
+        </div>
+        <div class="c-input">
+          <span class="c-input-label">Title</span>
+          <span class="c-input-val empty">Their role</span>
+        </div>
+      </div>
+      <div class="c-cta-row">
+        <button class="c-btn">Build Brief ↗</button>
+        <div class="c-stats">
+          <div class="c-stat"><strong>~12s</strong>to generate</div>
+          <div class="c-stat"><strong>5</strong>intel modules</div>
+        </div>
+      </div>
+    </div>
+    <div class="direction-label">
+      <strong>C — "Pulse"</strong>
+      <span>Dark + High-Energy · Charcoal + Coral</span>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="font-size:12px">Click a card to select. Each direction uses distinct typography, color system, and compositional logic — not just color swaps.</p>

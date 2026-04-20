@@ -1,0 +1,459 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;1,300;1,700&family=Space+Grotesk:wght@300;400;500;700&family=Outfit:wght@300;400;600;800&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@400;700;900&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+.v2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.v2-card {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+.v2-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+.v2-card.selected { border-color: var(--accent); }
+
+.v2-label {
+  padding: 11px 16px;
+  background: var(--bg-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.v2-label strong { font-size: 13px; }
+.v2-label span { font-size: 10px; opacity: 0.55; }
+
+/* ── DIRECTION D: Field Notes (Analog warmth) ── */
+.mockup-d {
+  background: #f7f2e8;
+  background-image:
+    linear-gradient(rgba(180,160,120,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180,160,120,0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  padding: 22px 20px;
+  min-height: 320px;
+  font-family: 'Space Grotesk', sans-serif;
+  position: relative;
+}
+.mockup-d .d-corner {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: #b0a080;
+  line-height: 1.7;
+  text-align: right;
+}
+.mockup-d .d-rule {
+  height: 3px;
+  background: #2d2415;
+  margin-bottom: 16px;
+  width: 40px;
+}
+.mockup-d .d-headline {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2d2415;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+.mockup-d .d-italic {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13px;
+  color: #7a6a4a;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.mockup-d .d-fields {
+  background: rgba(255,255,250,0.7);
+  border: 1px solid #d8cdb0;
+  padding: 14px;
+}
+.mockup-d .d-field {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  border-bottom: 1px dashed #d0c4a4;
+  padding: 7px 0;
+}
+.mockup-d .d-field:last-of-type { border-bottom: none; }
+.mockup-d .d-flabel {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: #9a8a6a;
+  width: 70px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+.mockup-d .d-fval {
+  font-size: 11px;
+  color: #4a3c28;
+}
+.mockup-d .d-fval.ph { color: #c4b49a; font-style: italic; }
+.mockup-d .d-btn {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mockup-d .d-btn-main {
+  padding: 8px 16px;
+  background: #2d2415;
+  color: #f0e8d0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  border: none;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+.mockup-d .d-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: #9a8a6a;
+  border: 1px solid #c4b49a;
+  padding: 3px 7px;
+}
+
+/* ── DIRECTION E: Bauhaus (Pure Typography) ── */
+.mockup-e {
+  background: #f8f8f6;
+  padding: 0;
+  min-height: 320px;
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.mockup-e .e-top-bar {
+  background: #1a1a1a;
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mockup-e .e-wordmark {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #f8f8f6;
+  letter-spacing: 0.5px;
+}
+.mockup-e .e-nav-dot {
+  width: 8px;
+  height: 8px;
+  background: #e63946;
+  border-radius: 50%;
+}
+.mockup-e .e-body {
+  padding: 22px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.mockup-e .e-number {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: #f0f0ee;
+  line-height: 1;
+  margin-bottom: -12px;
+  user-select: none;
+}
+.mockup-e .e-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.mockup-e .e-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.mockup-e .e-cell {
+  border: 1.5px solid #ddd;
+  padding: 8px 10px;
+}
+.mockup-e .e-cell-label {
+  font-size: 7px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 4px;
+}
+.mockup-e .e-cell-val {
+  font-size: 11px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+.mockup-e .e-cell-val.ph { color: #ccc; font-weight: 300; }
+.mockup-e .e-cell-full {
+  grid-column: 1 / -1;
+  border: 1.5px solid #ddd;
+  padding: 8px 10px;
+}
+.mockup-e .e-action {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.mockup-e .e-btn-red {
+  background: #e63946;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+}
+.mockup-e .e-btn-outline {
+  background: transparent;
+  border: 1.5px solid #1a1a1a;
+  border-left: none;
+  padding: 9px 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+/* ── DIRECTION F: Radar (Night vision / live intel) ── */
+.mockup-f {
+  background: #0a1208;
+  padding: 22px 18px;
+  min-height: 320px;
+  font-family: 'Space Grotesk', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.mockup-f::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(130,200,80,0.06);
+  border-radius: 50%;
+  box-shadow: 0 0 0 40px rgba(130,200,80,0.03), 0 0 0 80px rgba(130,200,80,0.02);
+  pointer-events: none;
+}
+.mockup-f .f-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.mockup-f .f-dot {
+  width: 6px;
+  height: 6px;
+  background: #7cc84a;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #7cc84a;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.mockup-f .f-status-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: #7cc84a;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.mockup-f .f-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #e8f0e0;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin-bottom: 18px;
+}
+.mockup-f .f-headline em {
+  font-style: normal;
+  color: #7cc84a;
+}
+.mockup-f .f-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+.mockup-f .f-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(130,200,80,0.04);
+  border: 1px solid rgba(130,200,80,0.1);
+  padding: 7px 10px;
+}
+.mockup-f .f-row-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: #4a6a3a;
+  width: 24px;
+  flex-shrink: 0;
+}
+.mockup-f .f-row-label {
+  font-size: 8px;
+  color: #5a7a4a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 52px;
+  flex-shrink: 0;
+}
+.mockup-f .f-row-val {
+  font-size: 10px;
+  color: #c0d8a8;
+}
+.mockup-f .f-row-val.ph { color: #2a3a22; }
+.mockup-f .f-scan-btn {
+  width: 100%;
+  padding: 10px;
+  background: rgba(124,200,74,0.1);
+  border: 1px solid rgba(124,200,74,0.3);
+  color: #7cc84a;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mockup-f .f-scan-btn span { opacity: 0.5; font-size: 9px; }
+</style>
+
+<h2>3 New Directions</h2>
+<p class="subtitle">Different aesthetic philosophies — click to select</p>
+
+<div class="v2-grid" style="margin-top:20px">
+
+  <!-- DIRECTION D: Field Notes -->
+  <div class="v2-card" data-choice="d" onclick="toggleSelect(this)">
+    <div class="mockup-d">
+      <div class="d-corner">PREP BRIEF<br>v0.1</div>
+      <div class="d-rule"></div>
+      <div class="d-headline">The brief that<br>earns the meeting.</div>
+      <div class="d-italic">Research-backed. Persona-aware.<br>Ready before you walk in.</div>
+      <div class="d-fields">
+        <div class="d-field">
+          <span class="d-flabel">company —</span>
+          <span class="d-fval ph">target company</span>
+        </div>
+        <div class="d-field">
+          <span class="d-flabel">contact —</span>
+          <span class="d-fval ph">full name</span>
+        </div>
+        <div class="d-field">
+          <span class="d-flabel">title —</span>
+          <span class="d-fval ph">their role</span>
+        </div>
+      </div>
+      <div class="d-btn">
+        <button class="d-btn-main">Generate →</button>
+        <span class="d-badge">~12s</span>
+      </div>
+    </div>
+    <div class="v2-label">
+      <strong>D — "Field Notes"</strong>
+      <span>Analog warmth · Parchment + Ink · Fraunces serif</span>
+    </div>
+  </div>
+
+  <!-- DIRECTION E: Bauhaus -->
+  <div class="v2-card" data-choice="e" onclick="toggleSelect(this)">
+    <div class="mockup-e">
+      <div class="e-top-bar">
+        <span class="e-wordmark">BRIEF</span>
+        <div class="e-nav-dot"></div>
+      </div>
+      <div class="e-body">
+        <div class="e-number">01</div>
+        <div class="e-headline">Intelligence before<br>every conversation.</div>
+        <div class="e-grid">
+          <div class="e-cell">
+            <div class="e-cell-label">Company</div>
+            <div class="e-cell-val ph">Enter name</div>
+          </div>
+          <div class="e-cell">
+            <div class="e-cell-label">Title</div>
+            <div class="e-cell-val ph">Their role</div>
+          </div>
+          <div class="e-cell-full">
+            <div class="e-cell-label">Contact Name</div>
+            <div class="e-cell-val ph">Full name</div>
+          </div>
+        </div>
+        <div class="e-action">
+          <button class="e-btn-red">Generate Brief</button>
+          <button class="e-btn-outline">~12s</button>
+        </div>
+      </div>
+    </div>
+    <div class="v2-label">
+      <strong>E — "Bauhaus"</strong>
+      <span>Swiss grid · Off-white + Red + Black · Unbounded</span>
+    </div>
+  </div>
+
+  <!-- DIRECTION F: Radar -->
+  <div class="v2-card" data-choice="f" onclick="toggleSelect(this)">
+    <div class="mockup-f">
+      <div class="f-status">
+        <div class="f-dot"></div>
+        <span class="f-status-text">intel system active</span>
+      </div>
+      <div class="f-headline">Know your target<br>before the <em>first word.</em></div>
+      <div class="f-rows">
+        <div class="f-row">
+          <span class="f-row-id">T-01</span>
+          <span class="f-row-label">company</span>
+          <span class="f-row-val ph">awaiting input...</span>
+        </div>
+        <div class="f-row">
+          <span class="f-row-id">T-02</span>
+          <span class="f-row-label">contact</span>
+          <span class="f-row-val ph">awaiting input...</span>
+        </div>
+        <div class="f-row">
+          <span class="f-row-id">T-03</span>
+          <span class="f-row-label">title</span>
+          <span class="f-row-val ph">awaiting input...</span>
+        </div>
+      </div>
+      <button class="f-scan-btn">INITIATE SCAN <span>► enter target info above</span></button>
+    </div>
+    <div class="v2-label">
+      <strong>F — "Radar"</strong>
+      <span>Night-vision · Deep forest + Chartreuse · Live intel feel</span>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="font-size:11px;margin-top:16px">D: warm analog credibility · E: bold graphic design confidence · F: surveillance/intelligence drama</p>

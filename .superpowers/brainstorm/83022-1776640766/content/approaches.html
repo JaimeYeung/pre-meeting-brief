@@ -1,0 +1,65 @@
+<h2>三种 Demo 方案</h2>
+<p class="subtitle">选一个最适合你的技术能力和展示目标的方向</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>纯 Claude API — 最简单</h3>
+      <p>输入公司名 + 联系人姓名 + 职位，Claude 基于训练知识生成完整 brief</p>
+      <div class="pros-cons" style="margin-top:12px">
+        <div class="pros"><h4>优点</h4><ul>
+          <li>一个 API key 搞定</li>
+          <li>vibe coding 友好，2-3 天可出</li>
+          <li>无需部署复杂后端</li>
+        </ul></div>
+        <div class="cons"><h4>缺点</h4><ul>
+          <li>"近期新闻"可能过时</li>
+          <li>对冷门公司效果差</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Claude + 网页搜索 — 推荐 ★</h3>
+      <p>调用 Tavily / Perplexity 搜索 API 获取实时新闻和 LinkedIn 数据，再喂给 Claude 生成 brief</p>
+      <div class="pros-cons" style="margin-top:12px">
+        <div class="pros"><h4>优点</h4><ul>
+          <li>新闻/融资/招聘数据真实准确</li>
+          <li>展示"AI + 数据整合"能力</li>
+          <li>Tavily 有免费额度够 demo 用</li>
+          <li>最接近真实产品</li>
+        </ul></div>
+        <div class="cons"><h4>缺点</h4><ul>
+          <li>需要两个 API key</li>
+          <li>稍复杂，需要一个简单后端</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Claude + 用户粘贴上下文</h3>
+      <p>用户输入公司名 + 联系人后，可选粘贴一段 LinkedIn bio 或公司简介，Claude 结合两者生成</p>
+      <div class="pros-cons" style="margin-top:12px">
+        <div class="pros"><h4>优点</h4><ul>
+          <li>一个 API key，无需搜索服务</li>
+          <li>用户可控数据质量</li>
+          <li>比 A 方案输出质量更高</li>
+        </ul></div>
+        <div class="cons"><h4>缺点</h4><ul>
+          <li>用户需要手动粘贴内容</li>
+          <li>增加 demo 摩擦感</li>
+          <li>Portfolio 访客可能不愿意操作</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:20px;color:var(--text-secondary)">我推荐 <strong>B 方案</strong>：实时数据让 brief 真实可信，Tavily 免费额度足够，对 portfolio 访客来说"输入公司名就能出真实结果"的体验远比其他方案更有说服力。</p>

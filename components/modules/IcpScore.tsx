@@ -11,7 +11,7 @@ export function IcpScore({ data }: { data: IcpScoreData }) {
   const badge = (
     <span style={{
       fontFamily: 'var(--font-body)',
-      fontSize: '9px',
+      fontSize: 'var(--text-xs)',
       letterSpacing: '2px',
       textTransform: 'uppercase' as const,
       color: tierColors[data.dealPotential] ?? 'var(--gold)',
@@ -27,17 +27,17 @@ export function IcpScore({ data }: { data: IcpScoreData }) {
     <CollapsibleCard label="Qualification" title="ICP Score · Deal Potential" badge={badge}>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px', marginBottom: '16px' }}>
         <div>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '56px', fontWeight: 300, color: 'var(--ink)', lineHeight: 1 }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '3.5rem', fontWeight: 300, color: 'var(--ink)', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
             {data.score}
           </span>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '22px', color: 'var(--muted)', fontStyle: 'italic' }}>/10</span>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.375rem', color: 'var(--muted)', fontStyle: 'italic' }}>/10</span>
         </div>
       </div>
 
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 1.7, marginBottom: '8px' }}>
+      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 'var(--leading-normal)', marginBottom: '8px', maxWidth: '65ch' }}>
         {data.rationale}
       </p>
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: '13px', color: 'var(--muted)', fontStyle: 'italic', lineHeight: 1.6 }}>
+      <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-sm)', color: 'var(--muted)', fontStyle: 'italic', lineHeight: 'var(--leading-snug)', maxWidth: '65ch' }}>
         {data.dealRationale}
       </p>
     </CollapsibleCard>

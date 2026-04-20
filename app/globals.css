@@ -18,6 +18,19 @@
   --error: #a03020;
   --font-display: var(--font-cormorant), 'Georgia', serif;
   --font-body: var(--font-dm-sans), system-ui, sans-serif;
+
+  /* Type scale — 1.25 ratio from 16px base */
+  --text-xs:   0.625rem;    /* 10px — uppercase labels */
+  --text-sm:   0.8125rem;   /* 13px — secondary / meta */
+  --text-base: 0.9375rem;   /* 15px — card body text */
+  --text-md:   1.125rem;    /* 18px — lead / subheading */
+  --text-lg:   1.25rem;     /* 20px — module titles */
+  --text-xl:   clamp(1.75rem, 4vw, 2.625rem); /* 28–42px — page headline */
+
+  /* Line heights */
+  --leading-tight:  1.15;
+  --leading-snug:   1.4;
+  --leading-normal: 1.65;
 }
 
 body {

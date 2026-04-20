@@ -41,8 +41,8 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
     <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '560px', margin: '0 auto' }}>
       <p style={{
         fontFamily: 'var(--font-display)',
-        fontSize: '11px',
-        letterSpacing: '4px',
+        fontSize: 'var(--text-xs)',
+        letterSpacing: '0.25em',
         textTransform: 'uppercase',
         color: 'var(--gold)',
         textAlign: 'center',
@@ -55,13 +55,13 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
 
       <h1 style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(28px, 4vw, 42px)',
+        fontSize: 'var(--text-xl)',
         fontWeight: 300,
         color: 'var(--ink)',
         textAlign: 'center',
-        lineHeight: 1.25,
+        lineHeight: 'var(--leading-tight)',
         margin: '14px 0 4px',
-        letterSpacing: '-0.3px',
+        letterSpacing: '-0.02em',
       }}>
         Your <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>briefing</em><br />
         is being prepared.
@@ -69,8 +69,8 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
 
       <p style={{
         fontFamily: 'var(--font-body)',
-        fontSize: '10px',
-        letterSpacing: '1.5px',
+        fontSize: 'var(--text-xs)',
+        letterSpacing: '0.18em',
         textTransform: 'uppercase',
         color: 'var(--muted)',
         textAlign: 'center',
@@ -97,8 +97,8 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
               htmlFor={id}
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '8px',
-                letterSpacing: '2px',
+                fontSize: 'var(--text-xs)',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 color: 'var(--gold)',
                 cursor: 'text',
@@ -119,7 +119,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
                 border: 'none',
                 outline: 'none',
                 fontFamily: 'var(--font-display)',
-                fontSize: '14px',
+                fontSize: 'var(--text-base)',
                 fontStyle: value ? 'normal' : 'italic',
                 color: value ? 'var(--ink)' : 'var(--muted)',
                 width: '100%',
@@ -157,8 +157,8 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
             border: '1px solid var(--gold)',
             color: (btnHovered || btnActive) && !isLoading ? 'var(--cream)' : isLoading ? 'var(--muted)' : 'var(--gold)',
             fontFamily: 'var(--font-body)',
-            fontSize: '9px',
-            letterSpacing: '3px',
+            fontSize: 'var(--text-xs)',
+            letterSpacing: '0.2em',
             textTransform: 'uppercase',
             cursor: isLoading ? 'not-allowed' : 'pointer',
             transition: 'background 0.2s ease, color 0.2s ease',

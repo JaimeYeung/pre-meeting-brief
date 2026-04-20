@@ -5,7 +5,7 @@ export function ObjectionHandling({ data }: { data: ObjectionHandlingData }) {
   return (
     <CollapsibleCard label="Tactics" title="Objection Handling">
       {data.missingDataNote && (
-        <p style={{ fontSize: '11px', color: 'var(--muted)', fontStyle: 'italic', marginBottom: '14px', fontFamily: 'var(--font-display)' }}>
+        <p style={{ fontSize: 'var(--text-sm)', color: 'var(--muted)', fontStyle: 'italic', marginBottom: '14px', fontFamily: 'var(--font-display)' }}>
           ⚠ {data.missingDataNote}
         </p>
       )}
@@ -16,10 +16,10 @@ export function ObjectionHandling({ data }: { data: ObjectionHandlingData }) {
             borderBottom: i < data.objections.length - 1 ? '1px dashed var(--border-dashed)' : 'none',
             paddingBottom: i < data.objections.length - 1 ? '16px' : '0',
           }}>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: 600, color: 'var(--ink)', lineHeight: 1.5, marginBottom: '8px' }}>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: 600, color: 'var(--ink)', lineHeight: 'var(--leading-snug)', marginBottom: '8px' }}>
               "{item.objection}"
             </p>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: '13px', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 1.7, paddingLeft: '12px', borderLeft: '2px solid var(--gold)' }}>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-sm)', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 'var(--leading-normal)', paddingLeft: '12px', borderLeft: '2px solid var(--gold)' }}>
               {item.response}
             </p>
           </div>

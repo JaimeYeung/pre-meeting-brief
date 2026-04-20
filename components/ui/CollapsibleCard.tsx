@@ -55,8 +55,8 @@ export function CollapsibleCard({
           <div>
             <p style={{
               fontFamily: 'var(--font-body)',
-              fontSize: '8px',
-              letterSpacing: '2px',
+              fontSize: 'var(--text-xs)',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
               color: 'var(--gold)',
               marginBottom: '4px',
@@ -65,11 +65,11 @@ export function CollapsibleCard({
             </p>
             <h2 style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '20px',
+              fontSize: 'var(--text-lg)',
               fontWeight: 600,
               color: 'var(--ink)',
-              lineHeight: 1.2,
-              letterSpacing: '-0.3px',
+              lineHeight: 'var(--leading-tight)',
+              letterSpacing: '-0.02em',
             }}>
               {title}
             </h2>

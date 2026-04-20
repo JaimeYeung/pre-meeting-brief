@@ -4,7 +4,7 @@ import { CollapsibleCard } from '../ui/CollapsibleCard'
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div style={{ marginBottom: '16px' }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '8px', letterSpacing: '1.5px', textTransform: 'uppercase' as const, color: 'var(--muted)', marginBottom: '8px' }}>
+      <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--muted)', marginBottom: '8px' }}>
         {label}
       </p>
       {children}
@@ -16,7 +16,7 @@ export function PersonaIntel({ data }: { data: PersonaIntelData }) {
   return (
     <CollapsibleCard label="Research" title="Persona & Competitive Intel">
       {data.missingDataNote && (
-        <p style={{ fontSize: '11px', color: 'var(--muted)', fontStyle: 'italic', marginBottom: '14px', fontFamily: 'var(--font-display)' }}>
+        <p style={{ fontSize: 'var(--text-sm)', color: 'var(--muted)', fontStyle: 'italic', marginBottom: '14px', fontFamily: 'var(--font-display)' }}>
           ⚠ {data.missingDataNote}
         </p>
       )}
@@ -24,7 +24,7 @@ export function PersonaIntel({ data }: { data: PersonaIntelData }) {
       <Section label="Pain Points">
         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
           {data.painPoints.map((pt, i) => (
-            <li key={i} style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontStyle: 'italic', color: 'var(--ink-light)', paddingLeft: '14px', borderLeft: '2px solid var(--border)', lineHeight: 1.5 }}>
+            <li key={i} style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', fontStyle: 'italic', color: 'var(--ink-light)', paddingLeft: '14px', borderLeft: '2px solid var(--border)', lineHeight: 'var(--leading-snug)' }}>
               {pt}
             </li>
           ))}
@@ -32,13 +32,13 @@ export function PersonaIntel({ data }: { data: PersonaIntelData }) {
       </Section>
 
       <Section label="Likely Current Solution">
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 1.7 }}>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 'var(--leading-normal)' }}>
           {data.likelySolution}
         </p>
       </Section>
 
       <Section label="Displacement Angle">
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 1.7 }}>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 'var(--leading-normal)' }}>
           {data.displacementAngle}
         </p>
       </Section>

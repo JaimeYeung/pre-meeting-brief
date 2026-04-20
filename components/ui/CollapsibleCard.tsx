@@ -25,7 +25,7 @@ export function CollapsibleCard({
       background: 'var(--card-bg)',
       border: '1px solid var(--border)',
       borderTop: '3px solid var(--gold)',
-      marginBottom: '16px',
+      marginBottom: 'var(--space-5)',
       overflow: 'hidden',
     }}>
       <button
@@ -35,7 +35,7 @@ export function CollapsibleCard({
         onMouseLeave={() => setHovered(false)}
         style={{
           width: '100%',
-          padding: '20px 24px',
+          padding: 'var(--space-6)',
           background: hovered ? 'rgba(201,168,76,0.04)' : 'transparent',
           border: 'none',
           borderBottom: open ? '1px solid var(--border)' : 'none',
@@ -43,7 +43,7 @@ export function CollapsibleCard({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '12px',
+          gap: 'var(--space-3)',
           textAlign: 'left',
           transition: 'background 0.15s ease',
           outline: 'none',
@@ -51,7 +51,7 @@ export function CollapsibleCard({
         onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px var(--gold)' }}
         onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flex: 1 }}>
           <div>
             <p style={{
               fontFamily: 'var(--font-body)',
@@ -59,7 +59,7 @@ export function CollapsibleCard({
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
               color: 'var(--gold)',
-              marginBottom: '4px',
+              marginBottom: 'var(--space-1)',
             }}>
               {label}
             </p>
@@ -74,7 +74,7 @@ export function CollapsibleCard({
               {title}
             </h2>
           </div>
-          {badge && <div style={{ marginLeft: '4px' }}>{badge}</div>}
+          {badge && <div style={{ marginLeft: 'var(--space-2)' }}>{badge}</div>}
         </div>
 
         <svg
@@ -100,7 +100,7 @@ export function CollapsibleCard({
         transition: 'grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
       }}>
         <div style={{ overflow: 'hidden' }}>
-          <div style={{ padding: '20px 24px 24px' }}>
+          <div style={{ padding: 'var(--space-6)' }}>
             {children}
           </div>
         </div>

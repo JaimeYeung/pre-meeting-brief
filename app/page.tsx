@@ -51,7 +51,7 @@ export default function Page() {
         linear-gradient(90deg, rgba(180,160,120,0.04) 1px, transparent 1px)
       `,
       backgroundSize: '24px 24px',
-      padding: 'clamp(24px, 4vw, 40px) clamp(16px, 4vw, 40px)',
+      padding: 'clamp(var(--space-8), 6vw, var(--space-16)) clamp(var(--space-5), 5vw, var(--space-10))',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -60,8 +60,8 @@ export default function Page() {
         position: 'relative',
         width: '100%',
         maxWidth: '960px',
-        paddingTop: '24px',
-        paddingBottom: '24px',
+        paddingTop: 'var(--space-6)',
+        paddingBottom: 'var(--space-6)',
       }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent)' }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent)' }} />

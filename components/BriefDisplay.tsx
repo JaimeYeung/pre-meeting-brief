@@ -21,11 +21,29 @@ const INPUT_MODE_NOTES: Record<string, string> = {
 
 function MissingModule({ label, note }: { label: string; note: string }) {
   return (
-    <div style={{ background: 'var(--card-bg)', border: '1px dashed var(--border)', padding: '24px', marginBottom: '16px', textAlign: 'center' as const }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '8px', letterSpacing: '2px', textTransform: 'uppercase' as const, color: 'var(--muted)', marginBottom: '8px' }}>
+    <div style={{
+      background: 'var(--card-bg)',
+      border: '1px dashed var(--border)',
+      padding: 'var(--space-6)',
+      marginBottom: 'var(--space-5)',
+      textAlign: 'center' as const,
+    }}>
+      <p style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: 'var(--text-xs)',
+        letterSpacing: '0.18em',
+        textTransform: 'uppercase' as const,
+        color: 'var(--muted)',
+        marginBottom: 'var(--space-2)',
+      }}>
         {label}
       </p>
-      <p style={{ fontFamily: 'var(--font-display)', fontSize: '13px', fontStyle: 'italic', color: 'var(--muted)' }}>
+      <p style={{
+        fontFamily: 'var(--font-display)',
+        fontSize: 'var(--text-sm)',
+        fontStyle: 'italic',
+        color: 'var(--muted)',
+      }}>
         {note}
       </p>
     </div>
@@ -36,33 +54,33 @@ export function BriefDisplay({ brief, inputMode, isLoading }: BriefDisplayProps)
   if (!isLoading && !brief) return null
 
   return (
-    <div style={{ width: '100%', maxWidth: '960px', margin: '0 auto', paddingTop: '24px' }}>
+    <div style={{ width: '100%', maxWidth: '960px', margin: '0 auto', paddingTop: 'var(--space-8)' }}>
       <GoldDivider />
 
       {inputMode && INPUT_MODE_NOTES[inputMode] && (
         <p style={{
           fontFamily: 'var(--font-display)',
-          fontSize: '12px',
+          fontSize: 'var(--text-sm)',
           fontStyle: 'italic',
           color: 'var(--muted)',
           textAlign: 'center',
-          margin: '16px 0 24px',
+          margin: 'var(--space-4) 0 var(--space-6)',
         }}>
           {INPUT_MODE_NOTES[inputMode]}
         </p>
       )}
 
       {isLoading ? (
-        <>
+        <div style={{ marginTop: 'var(--space-6)' }}>
           <SkeletonCard height={180} />
-          <SkeletonCard height={140} />
+          <SkeletonCard height={160} />
           <SkeletonCard height={200} />
           <SkeletonCard height={220} />
           <SkeletonCard height={180} />
-        </>
+        </div>
       ) : brief ? (
         <>
-          <div style={{ marginTop: '24px' }}>
+          <div style={{ marginTop: 'var(--space-6)' }}>
             <CompanySnapshot data={brief.companySnapshot} />
             <IcpScore data={brief.icpScore} />
             {brief.personaIntel
@@ -75,7 +93,15 @@ export function BriefDisplay({ brief, inputMode, isLoading }: BriefDisplayProps)
               : <MissingModule label="Objection Handling" note="Add a contact name and title to unlock objection handling." />
             }
           </div>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '9px', color: 'var(--muted)', textAlign: 'center', letterSpacing: '1px', marginTop: '8px', marginBottom: '60px' }}>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'var(--text-xs)',
+            color: 'var(--muted)',
+            textAlign: 'center',
+            letterSpacing: '0.1em',
+            marginTop: 'var(--space-4)',
+            marginBottom: 'var(--space-16)',
+          }}>
             Generated {new Date(brief.generatedAt).toLocaleString()}
           </p>
         </>

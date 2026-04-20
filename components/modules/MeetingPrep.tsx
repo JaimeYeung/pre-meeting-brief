@@ -1,12 +1,9 @@
 import type { MeetingPrepData } from '@/lib/types'
+import { CollapsibleCard } from '../ui/CollapsibleCard'
 
 export function MeetingPrep({ data }: { data: MeetingPrepData }) {
   return (
-    <div style={{ background: 'var(--card-bg)', border: '1px solid var(--border)', borderTop: '3px solid var(--gold)', padding: '24px', marginBottom: '16px' }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '8px', letterSpacing: '2px', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '16px' }}>
-        Meeting Prep
-      </p>
-
+    <CollapsibleCard label="Preparation" title="Meeting Prep">
       {data.missingDataNote && (
         <p style={{ fontSize: '11px', color: 'var(--muted)', fontStyle: 'italic', marginBottom: '14px', fontFamily: 'var(--font-display)' }}>
           ⚠ {data.missingDataNote}
@@ -48,6 +45,6 @@ export function MeetingPrep({ data }: { data: MeetingPrepData }) {
           ))}
         </ol>
       </div>
-    </div>
+    </CollapsibleCard>
   )
 }

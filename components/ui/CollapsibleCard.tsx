@@ -1,0 +1,107 @@
+'use client'
+
+import { useState } from 'react'
+
+interface CollapsibleCardProps {
+  label: string
+  title: string
+  badge?: React.ReactNode
+  defaultOpen?: boolean
+  children: React.ReactNode
+}
+
+export function CollapsibleCard({
+  label,
+  title,
+  badge,
+  defaultOpen = true,
+  children,
+}: CollapsibleCardProps) {
+  const [open, setOpen] = useState(defaultOpen)
+
+  return (
+    <div style={{
+      background: 'var(--card-bg)',
+      border: '1px solid var(--border)',
+      borderTop: '3px solid var(--gold)',
+      marginBottom: '16px',
+      overflow: 'hidden',
+    }}>
+      {/* Header — clickable */}
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%',
+          padding: '20px 24px',
+          background: 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '12px',
+          textAlign: 'left',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
+          <div>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '8px',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              color: 'var(--gold)',
+              marginBottom: '4px',
+            }}>
+              {label}
+            </p>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '20px',
+              fontWeight: 600,
+              color: 'var(--ink)',
+              lineHeight: 1.2,
+              letterSpacing: '-0.3px',
+            }}>
+              {title}
+            </h2>
+          </div>
+          {badge && <div style={{ marginLeft: '4px' }}>{badge}</div>}
+        </div>
+
+        {/* Chevron */}
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          style={{
+            flexShrink: 0,
+            color: 'var(--gold)',
+            transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        >
+          <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {/* Collapsible body — grid trick for smooth height animation */}
+      <div style={{
+        display: 'grid',
+        gridTemplateRows: open ? '1fr' : '0fr',
+        transition: 'grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+      }}>
+        <div style={{ overflow: 'hidden' }}>
+          <div style={{
+            padding: '0 24px 24px',
+            borderTop: '1px solid var(--border)',
+            paddingTop: '20px',
+          }}>
+            {children}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

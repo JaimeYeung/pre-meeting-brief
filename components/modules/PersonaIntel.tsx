@@ -1,4 +1,5 @@
 import type { PersonaIntelData } from '@/lib/types'
+import { CollapsibleCard } from '../ui/CollapsibleCard'
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -13,11 +14,7 @@ function Section({ label, children }: { label: string; children: React.ReactNode
 
 export function PersonaIntel({ data }: { data: PersonaIntelData }) {
   return (
-    <div style={{ background: 'var(--card-bg)', border: '1px solid var(--border)', borderTop: '3px solid var(--gold)', padding: '24px', marginBottom: '16px' }}>
-      <p style={{ fontFamily: 'var(--font-body)', fontSize: '8px', letterSpacing: '2px', textTransform: 'uppercase' as const, color: 'var(--gold)', marginBottom: '16px' }}>
-        Persona &amp; Competitive Intel
-      </p>
-
+    <CollapsibleCard label="Research" title="Persona & Competitive Intel">
       {data.missingDataNote && (
         <p style={{ fontSize: '11px', color: 'var(--muted)', fontStyle: 'italic', marginBottom: '14px', fontFamily: 'var(--font-display)' }}>
           ⚠ {data.missingDataNote}
@@ -45,6 +42,6 @@ export function PersonaIntel({ data }: { data: PersonaIntelData }) {
           {data.displacementAngle}
         </p>
       </Section>
-    </div>
+    </CollapsibleCard>
   )
 }

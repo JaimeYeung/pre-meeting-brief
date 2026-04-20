@@ -36,7 +36,7 @@ export function BriefDisplay({ brief, inputMode, isLoading }: BriefDisplayProps)
   if (!isLoading && !brief) return null
 
   return (
-    <div style={{ width: '100%', maxWidth: '720px', margin: '0 auto', paddingTop: '40px' }}>
+    <div style={{ width: '100%', maxWidth: '680px', margin: '0 auto', paddingTop: '24px' }}>
       <GoldDivider />
 
       {inputMode && INPUT_MODE_NOTES[inputMode] && (

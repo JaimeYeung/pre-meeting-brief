@@ -44,7 +44,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
         textTransform: 'uppercase',
         color: 'var(--gold)',
         textAlign: 'center',
-        marginBottom: '20px',
+        marginBottom: '14px',
       }}>
         B · R · I · E · F
       </p>
@@ -53,12 +53,12 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
 
       <h1 style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(26px, 4vw, 38px)',
+        fontSize: 'clamp(20px, 3vw, 26px)',
         fontWeight: 300,
         color: 'var(--ink)',
         textAlign: 'center',
         lineHeight: 1.25,
-        margin: '20px 0 6px',
+        margin: '14px 0 4px',
         letterSpacing: '-0.3px',
       }}>
         Your <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>briefing</em><br />
@@ -72,7 +72,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
         textTransform: 'uppercase',
         color: 'var(--muted)',
         textAlign: 'center',
-        marginBottom: '28px',
+        marginBottom: '16px',
       }}>
         Pre-meeting intelligence
       </p>

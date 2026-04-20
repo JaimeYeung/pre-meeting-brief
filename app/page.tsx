@@ -49,7 +49,7 @@ export default function Page() {
         linear-gradient(90deg, rgba(180,160,120,0.04) 1px, transparent 1px)
       `,
       backgroundSize: '24px 24px',
-      padding: 'clamp(40px, 8vw, 80px) clamp(20px, 5vw, 60px)',
+      padding: 'clamp(24px, 4vw, 40px) clamp(16px, 4vw, 40px)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -57,7 +57,7 @@ export default function Page() {
       <div style={{
         position: 'relative',
         width: '100%',
-        maxWidth: '560px',
+        maxWidth: '680px',
         paddingTop: '24px',
         paddingBottom: '24px',
       }}>

@@ -15,11 +15,12 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
   const [error, setError] = useState('')
   const [btnHovered, setBtnHovered] = useState(false)
   const [btnActive, setBtnActive] = useState(false)
+  const [focusedField, setFocusedField] = useState<string | null>(null)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!company.trim()) {
-      setError('Company name is required to generate a brief.')
+      setError('Company name is required.')
       return
     }
     setError('')
@@ -36,45 +37,49 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
     { id: 'title', label: 'Title', value: contactTitle, setter: setContactTitle, required: false, placeholder: 'Their role (optional)' },
   ]
 
+  const btnBg = btnActive ? 'var(--ink-active)' : btnHovered ? 'var(--ink-hover)' : 'var(--ink)'
+
   return (
     <div style={{ width: '100%' }}>
-      {/* Hero photo block */}
+      {/* Hero photo block — taller, more editorial */}
       <div style={{
         width: '100%',
-        height: '120px',
-        background: 'linear-gradient(135deg, #d4c5b0 0%, #c8b89a 50%, #b8a888 100%)',
+        height: '160px',
+        background: 'linear-gradient(135deg, var(--cream-dark) 0%, #c8b89a 60%, #b0a07a 100%)',
         display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'space-between',
-        padding: 'var(--space-4) var(--space-5)',
-        marginBottom: 'var(--space-5)',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        padding: 'var(--space-5)',
+        marginBottom: 'var(--space-6)',
         position: 'relative',
       }}>
-        <p style={{
-          fontFamily: 'var(--font-display)',
-          fontStyle: 'italic',
-          fontSize: 'var(--text-sm)',
-          color: 'rgba(255,255,255,0.75)',
-          letterSpacing: '0.03em',
-        }}>
-          prepare like a professional
-        </p>
         <span style={{
+          position: 'absolute',
+          top: 'var(--space-4)',
+          right: 'var(--space-4)',
           background: 'var(--accent)',
           color: '#fff',
           fontFamily: 'var(--font-body)',
           fontSize: 'var(--text-xs)',
           fontWeight: 500,
-          letterSpacing: '0.12em',
+          letterSpacing: '0.14em',
           textTransform: 'uppercase',
           padding: '4px 10px',
         }}>
           AI-powered
         </span>
+        <p style={{
+          fontFamily: 'var(--font-display)',
+          fontStyle: 'italic',
+          fontSize: 'var(--text-base)',
+          color: 'rgba(42,37,32,0.55)',
+          letterSpacing: '0.01em',
+        }}>
+          prepare like a professional
+        </p>
       </div>
 
       <form onSubmit={handleSubmit}>
-        {/* Kicker + headline */}
         <p style={{
           fontFamily: 'var(--font-body)',
           fontSize: 'var(--text-xs)',
@@ -90,35 +95,42 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
         <h1 style={{
           fontFamily: 'var(--font-display)',
           fontSize: 'var(--text-xl)',
-          fontWeight: 600,
+          fontWeight: 400,
           color: 'var(--ink)',
           lineHeight: 'var(--leading-tight)',
-          marginBottom: 'var(--space-5)',
-          letterSpacing: '-0.02em',
+          marginBottom: 'var(--space-6)',
+          letterSpacing: '-0.01em',
         }}>
           Walk into every<br />meeting prepared.
         </h1>
 
-        {/* Input fields */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
           {fields.map(({ id, label, value, setter, required, placeholder }) => (
-            <div key={id} style={{
-              display: 'flex',
-              alignItems: 'center',
-              background: 'var(--card-bg)',
-              border: '1px solid var(--border)',
-              padding: 'var(--space-3) var(--space-4)',
-              gap: 'var(--space-4)',
-            }}>
+            <div
+              key={id}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: 'var(--card-bg)',
+                border: '1px solid',
+                borderColor: focusedField === id ? 'var(--accent)' : 'var(--border)',
+                padding: 'var(--space-3) var(--space-4)',
+                gap: 'var(--space-4)',
+                transition: 'border-color 0.15s ease',
+                boxShadow: focusedField === id ? 'inset 3px 0 0 var(--accent)' : 'none',
+              }}
+            >
               <label htmlFor={id} style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--text-xs)',
-                letterSpacing: '0.12em',
+                letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: 'var(--muted)',
+                color: focusedField === id ? 'var(--accent)' : 'var(--muted)',
                 width: '60px',
                 flexShrink: 0,
                 fontWeight: 500,
+                transition: 'color 0.15s ease',
+                cursor: 'text',
               }}>
                 {label}{required ? ' *' : ''}
               </label>
@@ -130,15 +142,19 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
                 onChange={e => setter(e.target.value)}
                 placeholder={placeholder}
                 aria-required={required}
+                onFocus={() => setFocusedField(id)}
+                onBlur={() => setFocusedField(null)}
                 style={{
                   background: 'transparent',
                   border: 'none',
                   outline: 'none',
-                  fontFamily: 'var(--font-display)',
+                  boxShadow: 'none',
+                  fontFamily: value ? 'var(--font-display)' : 'var(--font-body)',
                   fontStyle: value ? 'italic' : 'normal',
                   fontSize: 'var(--text-base)',
                   color: value ? 'var(--ink)' : 'var(--muted)',
                   flex: 1,
+                  lineHeight: 'var(--leading-snug)',
                 }}
               />
             </div>
@@ -165,20 +181,19 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
             onMouseDown={() => setBtnActive(true)}
             onMouseUp={() => setBtnActive(false)}
             style={{
-              padding: 'var(--space-3) var(--space-6)',
-              background: btnActive ? '#1a1410' : btnHovered ? '#3a312a' : 'var(--ink)',
+              padding: 'var(--space-3) var(--space-8)',
+              background: isLoading ? 'var(--muted)' : btnBg,
               color: '#fff',
               fontFamily: 'var(--font-body)',
               fontSize: 'var(--text-sm)',
               fontWeight: 500,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.04em',
               border: 'none',
               cursor: isLoading ? 'not-allowed' : 'pointer',
-              opacity: isLoading ? 0.6 : 1,
               transition: 'background 0.15s ease',
-              outline: 'none',
+              minWidth: '160px',
             }}
-            onFocus={e => { e.currentTarget.style.boxShadow = `0 0 0 2px var(--accent)` }}
+            onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px var(--accent)' }}
             onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
           >
             {isLoading ? 'Generating…' : 'Generate Brief'}

@@ -53,7 +53,7 @@ export function BriefDisplay({ brief, inputMode, isLoading }: BriefDisplayProps)
   if (!isLoading && !brief) return null
 
   return (
-    <div style={{ width: '100%', maxWidth: '960px', margin: '0 auto', paddingTop: 'var(--space-8)' }}>
+    <div style={{ width: '100%', maxWidth: '720px', margin: '0 auto', paddingTop: 'var(--space-8)' }}>
       <div style={{ height: '1px', background: 'var(--border)', width: '100%' }} />
 
       {inputMode && INPUT_MODE_NOTES[inputMode] && (

@@ -51,7 +51,7 @@ export default function Page() {
       flexDirection: 'column',
       alignItems: 'center',
     }}>
-      <div style={{ width: '100%', maxWidth: '680px' }}>
+      <div style={{ width: '100%', maxWidth: '720px' }}>
         <InputForm onSubmit={handleSubmit} isLoading={isLoading} />
       </div>
 

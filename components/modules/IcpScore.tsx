@@ -14,8 +14,8 @@ export function IcpScore({ data }: { data: IcpScoreData }) {
       fontSize: 'var(--text-xs)',
       letterSpacing: '0.18em',
       textTransform: 'uppercase' as const,
-      color: tierColors[data.dealPotential] ?? 'var(--accent)',
-      border: `1px solid ${tierColors[data.dealPotential] ?? 'var(--accent)'}`,
+      color: 'var(--accent)',
+      border: '1px solid var(--accent)',
       padding: '3px 10px',
       whiteSpace: 'nowrap' as const,
     }}>

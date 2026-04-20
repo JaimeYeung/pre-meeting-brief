@@ -17,6 +17,8 @@
   --border-dashed: #ccc4b8;
   --card-bg: #ffffff;
   --error: #c0392b;
+  --ink-hover: #3d342c;
+  --ink-active: #1a1410;
 
   /* Fonts */
   --font-display: var(--font-lora), 'Georgia', serif;
@@ -53,11 +55,20 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 input::placeholder {
-  font-family: var(--font-body);
-  color: var(--border);
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 @keyframes skeleton-pulse {

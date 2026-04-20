@@ -10,10 +10,33 @@ AI-powered pre-meeting intelligence for sales reps. Enter a company name and con
 - **Meeting Prep** — tailored agenda + 5 discovery questions
 - **Objection Handling** — 3 likely objections with suggested responses
 
+## Architecture
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant FE as Next.js Frontend
+    participant API as /api/generate
+    participant T as Tavily Search
+    participant AI as GPT-4o
+
+    U->>FE: Enter company + contact + title
+    FE->>API: POST /api/generate
+    API->>API: Validate inputs
+    API->>T: Search: "{company} news funding 2025"
+    API->>T: Search: "{company} hiring growth"
+    API->>T: Search: "{contact} {title} {company}"
+    T-->>API: Live web results
+    API->>AI: System prompt + search context + inputs
+    AI-->>API: Structured JSON (5 modules)
+    API-->>FE: BriefResponse + inputMode
+    FE->>U: Render collapsible brief cards
+```
+
 ## Stack
 
 - [Next.js](https://nextjs.org) (App Router)
-- [Claude API](https://anthropic.com) — `claude-sonnet-4-6` for structured brief generation
+- [OpenAI](https://openai.com) — `gpt-4o` for structured brief generation
 - [Tavily](https://tavily.com) — real-time web search for live company data
 - Deployed on [Vercel](https://vercel.com)
 

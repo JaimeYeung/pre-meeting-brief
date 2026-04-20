@@ -15,6 +15,7 @@
   --border: #e0d8c8;
   --border-dashed: #d0c4a4;
   --card-bg: rgba(255, 255, 250, 0.7);
+  --error: #a03020;
   --font-display: var(--font-cormorant), 'Georgia', serif;
   --font-body: var(--font-dm-sans), system-ui, sans-serif;
 }
@@ -24,6 +25,12 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   min-height: 100vh;
+}
+
+input::placeholder {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--border);
 }
 
 @keyframes skeleton-pulse {

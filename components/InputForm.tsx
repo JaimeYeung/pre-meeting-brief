@@ -15,6 +15,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
   const [contactTitle, setContactTitle] = useState('')
   const [error, setError] = useState('')
   const [btnHovered, setBtnHovered] = useState(false)
+  const [btnActive, setBtnActive] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -134,7 +135,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
         <p role="alert" style={{
           fontFamily: 'var(--font-body)',
           fontSize: '11px',
-          color: '#a0392b',
+          color: 'var(--error)',
           marginTop: '10px',
           textAlign: 'center',
         }}>
@@ -147,12 +148,14 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
           type="submit"
           disabled={isLoading}
           onMouseEnter={() => setBtnHovered(true)}
-          onMouseLeave={() => setBtnHovered(false)}
+          onMouseLeave={() => { setBtnHovered(false); setBtnActive(false) }}
+          onMouseDown={() => setBtnActive(true)}
+          onMouseUp={() => setBtnActive(false)}
           style={{
             padding: '12px 40px',
-            background: btnHovered && !isLoading ? 'var(--gold)' : 'transparent',
+            background: btnActive && !isLoading ? 'var(--ink)' : btnHovered && !isLoading ? 'var(--gold)' : 'transparent',
             border: '1px solid var(--gold)',
-            color: btnHovered && !isLoading ? 'var(--cream)' : isLoading ? 'var(--muted)' : 'var(--gold)',
+            color: (btnHovered || btnActive) && !isLoading ? 'var(--cream)' : isLoading ? 'var(--muted)' : 'var(--gold)',
             fontFamily: 'var(--font-body)',
             fontSize: '9px',
             letterSpacing: '3px',

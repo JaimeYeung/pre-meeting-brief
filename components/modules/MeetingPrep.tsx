@@ -36,7 +36,7 @@ export function MeetingPrep({ data }: { data: MeetingPrepData }) {
           {data.discoveryQuestions.map((q, i) => (
             <li key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: '8px', color: 'var(--gold)', marginTop: '3px', flexShrink: 0 }}>
-                0{i + 1}
+                {String(i + 1).padStart(2, '0')}
               </span>
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 1.6 }}>
                 {q}

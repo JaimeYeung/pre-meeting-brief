@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import type { BriefInput, BriefResponse, GenerateApiResponse } from '@/lib/types'
 import { InputForm } from '@/components/InputForm'
 import { BriefDisplay } from '@/components/BriefDisplay'
@@ -10,6 +10,7 @@ export default function Page() {
   const [brief, setBrief] = useState<BriefResponse | null>(null)
   const [inputMode, setInputMode] = useState<GenerateApiResponse['inputMode'] | null>(null)
   const [apiError, setApiError] = useState<string | null>(null)
+  const briefRef = useRef<HTMLDivElement>(null)
 
   async function handleSubmit(input: BriefInput) {
     setIsLoading(true)
@@ -33,6 +34,7 @@ export default function Page() {
       const response = data as GenerateApiResponse
       setBrief(response.brief)
       setInputMode(response.inputMode)
+      setTimeout(() => briefRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
     } catch {
       setApiError('Network error. Please check your connection and try again.')
     } finally {
@@ -79,7 +81,9 @@ export default function Page() {
         </p>
       )}
 
-      <BriefDisplay brief={brief} inputMode={inputMode} isLoading={isLoading} />
+      <div ref={briefRef} style={{ width: '100%' }}>
+        <BriefDisplay brief={brief} inputMode={inputMode} isLoading={isLoading} />
+      </div>
     </main>
   )
 }

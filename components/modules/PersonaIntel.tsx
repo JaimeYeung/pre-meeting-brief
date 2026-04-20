@@ -24,7 +24,7 @@ export function PersonaIntel({ data }: { data: PersonaIntelData }) {
       <Section label="Pain Points">
         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
           {data.painPoints.map((pt, i) => (
-            <li key={i} style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', fontStyle: 'italic', color: 'var(--ink-light)', paddingLeft: '14px', borderLeft: '2px solid var(--border)', lineHeight: 'var(--leading-snug)' }}>
+            <li key={i} style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', fontStyle: 'italic', color: 'var(--ink-light)', paddingLeft: '14px', borderLeft: '2px solid var(--border-dashed)', lineHeight: 'var(--leading-snug)' }}>
               {pt}
             </li>
           ))}

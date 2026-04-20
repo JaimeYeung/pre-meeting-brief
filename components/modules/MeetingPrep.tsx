@@ -17,7 +17,7 @@ export function MeetingPrep({ data }: { data: MeetingPrepData }) {
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' as const }}>
           {data.agenda.map((step, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-              <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', color: 'var(--gold)', border: '1px solid var(--gold)', width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', color: 'var(--gold)', border: '1px solid var(--accent)', width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 {i + 1}
               </span>
               <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-sm)', fontStyle: 'italic', color: 'var(--ink-light)' }}>

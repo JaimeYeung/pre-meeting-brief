@@ -5,7 +5,6 @@ import { PersonaIntel } from './modules/PersonaIntel'
 import { MeetingPrep } from './modules/MeetingPrep'
 import { ObjectionHandling } from './modules/ObjectionHandling'
 import { SkeletonCard } from './ui/SkeletonCard'
-import { GoldDivider } from './ui/GoldDivider'
 
 interface BriefDisplayProps {
   brief: BriefResponse | null
@@ -55,7 +54,7 @@ export function BriefDisplay({ brief, inputMode, isLoading }: BriefDisplayProps)
 
   return (
     <div style={{ width: '100%', maxWidth: '960px', margin: '0 auto', paddingTop: 'var(--space-8)' }}>
-      <GoldDivider />
+      <div style={{ height: '1px', background: 'var(--border)', width: '100%' }} />
 
       {inputMode && INPUT_MODE_NOTES[inputMode] && (
         <p style={{

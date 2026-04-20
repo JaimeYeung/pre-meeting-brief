@@ -47,7 +47,7 @@ export function CompanySnapshot({ data }: { data: CompanySnapshotData }) {
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-xs)', letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--muted)', marginBottom: '8px' }}>Recent News</p>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {data.recentNews.map((item, i) => (
-                <li key={i} style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', color: 'var(--ink-light)', paddingLeft: '12px', borderLeft: '2px solid var(--gold)', lineHeight: 'var(--leading-snug)' }}>
+                <li key={i} style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-base)', color: 'var(--ink-light)', paddingLeft: '12px', borderLeft: '2px solid var(--accent)', lineHeight: 'var(--leading-snug)' }}>
                   {item}
                 </li>
               ))}

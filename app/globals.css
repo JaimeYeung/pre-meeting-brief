@@ -5,44 +5,47 @@
 }
 
 :root {
-  --cream: #faf7f0;
-  --cream-dark: #f0ead8;
-  --ink: #1a1914;
-  --ink-light: #4a3c28;
-  --gold: #c9a84c;
-  --gold-light: #e0c878;
-  --muted: #a09070;
-  --border: #e0d8c8;
-  --border-dashed: #d0c4a4;
-  --card-bg: rgba(255, 255, 250, 0.7);
-  --error: #a03020;
-  --font-display: var(--font-cormorant), 'Georgia', serif;
-  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  /* Kinfolk palette */
+  --cream: #f6f2ec;
+  --cream-dark: #ede7dd;
+  --ink: #2a2520;
+  --ink-light: #5a4e42;
+  --accent: #e87040;
+  --accent-light: #f0956a;
+  --muted: #9a8e82;
+  --border: #ddd6cc;
+  --border-dashed: #ccc4b8;
+  --card-bg: #ffffff;
+  --error: #c0392b;
+
+  /* Fonts */
+  --font-display: var(--font-lora), 'Georgia', serif;
+  --font-body: var(--font-outfit), system-ui, sans-serif;
 
   /* Spacing scale — 4pt base */
-  --space-1:  0.25rem;   /*  4px */
-  --space-2:  0.5rem;    /*  8px */
-  --space-3:  0.75rem;   /* 12px */
-  --space-4:  1rem;      /* 16px */
-  --space-5:  1.25rem;   /* 20px */
-  --space-6:  1.5rem;    /* 24px */
-  --space-8:  2rem;      /* 32px */
-  --space-10: 2.5rem;    /* 40px */
-  --space-12: 3rem;      /* 48px */
-  --space-16: 4rem;      /* 64px */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
 
-  /* Type scale — 1.25 ratio from 16px base */
-  --text-xs:   0.625rem;    /* 10px — uppercase labels */
-  --text-sm:   0.8125rem;   /* 13px — secondary / meta */
-  --text-base: 0.9375rem;   /* 15px — card body text */
-  --text-md:   1.125rem;    /* 18px — lead / subheading */
-  --text-lg:   1.25rem;     /* 20px — module titles */
-  --text-xl:   clamp(1.75rem, 4vw, 2.625rem); /* 28–42px — page headline */
+  /* Type scale */
+  --text-xs:   0.625rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.25rem;
+  --text-xl:   clamp(1.75rem, 4vw, 2.625rem);
 
   /* Line heights */
-  --leading-tight:  1.15;
-  --leading-snug:   1.4;
-  --leading-normal: 1.65;
+  --leading-tight:  1.2;
+  --leading-snug:   1.45;
+  --leading-normal: 1.7;
 }
 
 body {
@@ -53,8 +56,7 @@ body {
 }
 
 input::placeholder {
-  font-family: var(--font-display);
-  font-style: italic;
+  font-family: var(--font-body);
   color: var(--border);
 }
 

@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import type { BriefInput } from '@/lib/types'
-import { GoldDivider } from './ui/GoldDivider'
 
 interface InputFormProps {
   onSubmit: (input: BriefInput) => void
@@ -38,136 +37,164 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
   ]
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '560px', margin: '0 auto' }}>
-      <p style={{
-        fontFamily: 'var(--font-display)',
-        fontSize: 'var(--text-xs)',
-        letterSpacing: '0.25em',
-        textTransform: 'uppercase',
-        color: 'var(--gold)',
-        textAlign: 'center',
-        marginBottom: '14px',
-      }}>
-        B · R · I · E · F
-      </p>
-
-      <GoldDivider />
-
-      <h1 style={{
-        fontFamily: 'var(--font-display)',
-        fontSize: 'var(--text-xl)',
-        fontWeight: 300,
-        color: 'var(--ink)',
-        textAlign: 'center',
-        lineHeight: 'var(--leading-tight)',
-        margin: '14px 0 4px',
-        letterSpacing: '-0.02em',
-      }}>
-        Your <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>briefing</em><br />
-        is being prepared.
-      </h1>
-
-      <p style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--text-xs)',
-        letterSpacing: '0.18em',
-        textTransform: 'uppercase',
-        color: 'var(--muted)',
-        textAlign: 'center',
-        marginBottom: '16px',
-      }}>
-        Pre-meeting intelligence
-      </p>
-
+    <div style={{ width: '100%' }}>
+      {/* Hero photo block */}
       <div style={{
-        background: 'var(--card-bg)',
-        border: '1px solid var(--border)',
-        borderTop: '3px solid var(--gold)',
-        padding: '20px',
+        width: '100%',
+        height: '120px',
+        background: 'linear-gradient(135deg, #d4c5b0 0%, #c8b89a 50%, #b8a888 100%)',
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+        padding: 'var(--space-4) var(--space-5)',
+        marginBottom: 'var(--space-5)',
+        position: 'relative',
       }}>
-        {fields.map(({ id, label, value, setter, required, placeholder }, i) => (
-          <div key={id} style={{
-            display: 'grid',
-            gridTemplateColumns: '70px 1fr',
-            alignItems: 'center',
-            borderBottom: i < fields.length - 1 ? '1px dashed var(--border-dashed)' : 'none',
-            padding: '10px 0',
-          }}>
-            <label
-              htmlFor={id}
-              style={{
+        <p style={{
+          fontFamily: 'var(--font-display)',
+          fontStyle: 'italic',
+          fontSize: 'var(--text-sm)',
+          color: 'rgba(255,255,255,0.75)',
+          letterSpacing: '0.03em',
+        }}>
+          prepare like a professional
+        </p>
+        <span style={{
+          background: 'var(--accent)',
+          color: '#fff',
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--text-xs)',
+          fontWeight: 500,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          padding: '4px 10px',
+        }}>
+          AI-powered
+        </span>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        {/* Kicker + headline */}
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--text-xs)',
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: 'var(--accent)',
+          marginBottom: 'var(--space-2)',
+          fontWeight: 500,
+        }}>
+          Pre-meeting brief
+        </p>
+
+        <h1 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: 'var(--text-xl)',
+          fontWeight: 600,
+          color: 'var(--ink)',
+          lineHeight: 'var(--leading-tight)',
+          marginBottom: 'var(--space-5)',
+          letterSpacing: '-0.02em',
+        }}>
+          Walk into every<br />meeting prepared.
+        </h1>
+
+        {/* Input fields */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>
+          {fields.map(({ id, label, value, setter, required, placeholder }) => (
+            <div key={id} style={{
+              display: 'flex',
+              alignItems: 'center',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--border)',
+              padding: 'var(--space-3) var(--space-4)',
+              gap: 'var(--space-4)',
+            }}>
+              <label htmlFor={id} style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--text-xs)',
-                letterSpacing: '0.18em',
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: 'var(--gold)',
-                cursor: 'text',
-              }}
-            >
-              {label}{required ? ' *' : ''}
-            </label>
-            <input
-              id={id}
-              name={id}
-              type="text"
-              value={value}
-              onChange={e => setter(e.target.value)}
-              placeholder={placeholder}
-              aria-required={required}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                outline: 'none',
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-base)',
-                fontStyle: value ? 'normal' : 'italic',
-                color: value ? 'var(--ink)' : 'var(--muted)',
-                width: '100%',
-              }}
-              onFocus={e => { e.currentTarget.style.borderBottom = '1px solid var(--gold)' }}
-              onBlur={e => { e.currentTarget.style.borderBottom = 'none' }}
-            />
-          </div>
-        ))}
-      </div>
+                color: 'var(--muted)',
+                width: '60px',
+                flexShrink: 0,
+                fontWeight: 500,
+              }}>
+                {label}{required ? ' *' : ''}
+              </label>
+              <input
+                id={id}
+                name={id}
+                type="text"
+                value={value}
+                onChange={e => setter(e.target.value)}
+                placeholder={placeholder}
+                aria-required={required}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  outline: 'none',
+                  fontFamily: 'var(--font-display)',
+                  fontStyle: value ? 'italic' : 'normal',
+                  fontSize: 'var(--text-base)',
+                  color: value ? 'var(--ink)' : 'var(--muted)',
+                  flex: 1,
+                }}
+              />
+            </div>
+          ))}
+        </div>
 
-      {error && (
-        <p role="alert" style={{
-          fontFamily: 'var(--font-body)',
-          fontSize: '11px',
-          color: 'var(--error)',
-          marginTop: '10px',
-          textAlign: 'center',
-        }}>
-          {error}
-        </p>
-      )}
-
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
-        <button
-          type="submit"
-          disabled={isLoading}
-          onMouseEnter={() => setBtnHovered(true)}
-          onMouseLeave={() => { setBtnHovered(false); setBtnActive(false) }}
-          onMouseDown={() => setBtnActive(true)}
-          onMouseUp={() => setBtnActive(false)}
-          style={{
-            padding: '12px 40px',
-            background: btnActive && !isLoading ? 'var(--ink)' : btnHovered && !isLoading ? 'var(--gold)' : 'transparent',
-            border: '1px solid var(--gold)',
-            color: (btnHovered || btnActive) && !isLoading ? 'var(--cream)' : isLoading ? 'var(--muted)' : 'var(--gold)',
+        {error && (
+          <p role="alert" style={{
             fontFamily: 'var(--font-body)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            cursor: isLoading ? 'not-allowed' : 'pointer',
-            transition: 'background 0.2s ease, color 0.2s ease',
-            borderColor: isLoading ? 'var(--muted)' : 'var(--gold)',
-          }}
-        >
-          {isLoading ? 'Preparing your brief…' : 'Request Brief'}
-        </button>
-      </div>
-    </form>
+            fontSize: 'var(--text-sm)',
+            color: 'var(--error)',
+            marginBottom: 'var(--space-3)',
+          }}>
+            {error}
+          </p>
+        )}
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
+          <button
+            type="submit"
+            disabled={isLoading}
+            onMouseEnter={() => setBtnHovered(true)}
+            onMouseLeave={() => { setBtnHovered(false); setBtnActive(false) }}
+            onMouseDown={() => setBtnActive(true)}
+            onMouseUp={() => setBtnActive(false)}
+            style={{
+              padding: 'var(--space-3) var(--space-6)',
+              background: btnActive ? '#1a1410' : btnHovered ? '#3a312a' : 'var(--ink)',
+              color: '#fff',
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--text-sm)',
+              fontWeight: 500,
+              letterSpacing: '0.02em',
+              border: 'none',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
+              opacity: isLoading ? 0.6 : 1,
+              transition: 'background 0.15s ease',
+              outline: 'none',
+            }}
+            onFocus={e => { e.currentTarget.style.boxShadow = `0 0 0 2px var(--accent)` }}
+            onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
+          >
+            {isLoading ? 'Generating…' : 'Generate Brief'}
+          </button>
+          {!isLoading && (
+            <span style={{
+              fontFamily: 'var(--font-display)',
+              fontStyle: 'italic',
+              fontSize: 'var(--text-sm)',
+              color: 'var(--muted)',
+            }}>
+              ready in ~12 seconds
+            </span>
+          )}
+        </div>
+      </form>
+    </div>
   )
 }

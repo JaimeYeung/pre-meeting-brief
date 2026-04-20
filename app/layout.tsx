@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
+import { Lora, Outfit } from 'next/font/google'
 import './globals.css'
 
-const cormorant = Cormorant_Garamond({
+const lora = Lora({
   subsets: ['latin'],
-  weight: ['300', '400', '600'],
+  weight: ['400', '600'],
   style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  variable: '--font-lora',
 })
 
-const dmSans = DM_Sans({
+const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  variable: '--font-dm-sans',
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-outfit',
 })
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${cormorant.variable} ${dmSans.variable}`}>
+      <body className={`${lora.variable} ${outfit.variable}`}>
         {children}
       </body>
     </html>

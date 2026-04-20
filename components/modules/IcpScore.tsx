@@ -14,8 +14,8 @@ export function IcpScore({ data }: { data: IcpScoreData }) {
       fontSize: 'var(--text-xs)',
       letterSpacing: '0.18em',
       textTransform: 'uppercase' as const,
-      color: tierColors[data.dealPotential] ?? 'var(--gold)',
-      border: `1px solid ${tierColors[data.dealPotential] ?? 'var(--gold)'}`,
+      color: tierColors[data.dealPotential] ?? 'var(--accent)',
+      border: `1px solid ${tierColors[data.dealPotential] ?? 'var(--accent)'}`,
       padding: '3px 10px',
       whiteSpace: 'nowrap' as const,
     }}>
@@ -54,7 +54,7 @@ export function IcpScore({ data }: { data: IcpScoreData }) {
           <div style={{
             height: '2px',
             width: `${data.score * 10}%`,
-            background: 'var(--gold)',
+            background: 'var(--accent)',
             transition: 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
             marginBottom: 'var(--space-2)',
           }} />

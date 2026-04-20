@@ -46,36 +46,21 @@ export default function Page() {
     <main style={{
       minHeight: '100vh',
       background: 'var(--cream)',
-      backgroundImage: `
-        linear-gradient(rgba(180,160,120,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(180,160,120,0.04) 1px, transparent 1px)
-      `,
-      backgroundSize: '24px 24px',
       padding: 'clamp(var(--space-8), 6vw, var(--space-16)) clamp(var(--space-5), 5vw, var(--space-10))',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
     }}>
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        maxWidth: '960px',
-        paddingTop: 'var(--space-6)',
-        paddingBottom: 'var(--space-6)',
-      }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent)' }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent)' }} />
+      <div style={{ width: '100%', maxWidth: '680px' }}>
         <InputForm onSubmit={handleSubmit} isLoading={isLoading} />
       </div>
 
       {apiError && (
         <p style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '13px',
-          fontStyle: 'italic',
-          color: '#c0392b',
-          marginTop: '20px',
-          textAlign: 'center',
+          fontFamily: 'var(--font-body)',
+          fontSize: 'var(--text-sm)',
+          color: 'var(--error)',
+          marginTop: 'var(--space-4)',
         }}>
           {apiError}
         </p>

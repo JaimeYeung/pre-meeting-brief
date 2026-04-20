@@ -24,7 +24,7 @@ export function CollapsibleCard({
     <div style={{
       background: 'var(--card-bg)',
       border: '1px solid var(--border)',
-      borderTop: '3px solid var(--gold)',
+      borderTop: '3px solid var(--accent)',
       marginBottom: 'var(--space-5)',
       overflow: 'hidden',
     }}>
@@ -35,8 +35,8 @@ export function CollapsibleCard({
         onMouseLeave={() => setHovered(false)}
         style={{
           width: '100%',
-          padding: 'var(--space-6)',
-          background: hovered ? 'rgba(201,168,76,0.04)' : 'transparent',
+          padding: 'var(--space-5) var(--space-6)',
+          background: hovered ? 'rgba(232,112,64,0.03)' : 'transparent',
           border: 'none',
           borderBottom: open ? '1px solid var(--border)' : 'none',
           cursor: 'pointer',
@@ -48,7 +48,7 @@ export function CollapsibleCard({
           transition: 'background 0.15s ease',
           outline: 'none',
         }}
-        onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px var(--gold)' }}
+        onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px var(--accent)' }}
         onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flex: 1 }}>
@@ -58,8 +58,9 @@ export function CollapsibleCard({
               fontSize: 'var(--text-xs)',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: 'var(--gold)',
+              color: 'var(--accent)',
               marginBottom: 'var(--space-1)',
+              fontWeight: 500,
             }}>
               {label}
             </p>
@@ -69,7 +70,7 @@ export function CollapsibleCard({
               fontWeight: 600,
               color: 'var(--ink)',
               lineHeight: 'var(--leading-tight)',
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.01em',
             }}>
               {title}
             </h2>
@@ -85,7 +86,7 @@ export function CollapsibleCard({
           aria-hidden="true"
           style={{
             flexShrink: 0,
-            color: 'var(--gold)',
+            color: 'var(--accent)',
             transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
             transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
           }}

@@ -19,7 +19,7 @@ export function ObjectionHandling({ data }: { data: ObjectionHandlingData }) {
             <p style={{ fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: 600, color: 'var(--ink)', lineHeight: 'var(--leading-snug)', marginBottom: '8px' }}>
               "{item.objection}"
             </p>
-            <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-sm)', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 'var(--leading-normal)', paddingLeft: '12px', borderLeft: '2px solid var(--gold)' }}>
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-sm)', fontStyle: 'italic', color: 'var(--ink-light)', lineHeight: 'var(--leading-normal)', paddingLeft: '12px', borderLeft: '2px solid var(--accent)' }}>
               {item.response}
             </p>
           </div>

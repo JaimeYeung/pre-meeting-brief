@@ -53,7 +53,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
 
       <h1 style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(20px, 3vw, 26px)',
+        fontSize: 'clamp(28px, 4vw, 42px)',
         fontWeight: 300,
         color: 'var(--ink)',
         textAlign: 'center',

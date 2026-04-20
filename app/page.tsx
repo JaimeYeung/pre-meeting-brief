@@ -57,7 +57,7 @@ export default function Page() {
       <div style={{
         position: 'relative',
         width: '100%',
-        maxWidth: '680px',
+        maxWidth: '960px',
         paddingTop: '24px',
         paddingBottom: '24px',
       }}>

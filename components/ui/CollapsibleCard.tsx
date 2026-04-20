@@ -18,6 +18,7 @@ export function CollapsibleCard({
   children,
 }: CollapsibleCardProps) {
   const [open, setOpen] = useState(defaultOpen)
+  const [hovered, setHovered] = useState(false)
 
   return (
     <div style={{
@@ -27,21 +28,28 @@ export function CollapsibleCard({
       marginBottom: '16px',
       overflow: 'hidden',
     }}>
-      {/* Header — clickable */}
       <button
         onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
         style={{
           width: '100%',
           padding: '20px 24px',
-          background: 'transparent',
+          background: hovered ? 'rgba(201,168,76,0.04)' : 'transparent',
           border: 'none',
+          borderBottom: open ? '1px solid var(--border)' : 'none',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '12px',
           textAlign: 'left',
+          transition: 'background 0.15s ease',
+          outline: 'none',
         }}
+        onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px var(--gold)' }}
+        onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
           <div>
@@ -69,12 +77,12 @@ export function CollapsibleCard({
           {badge && <div style={{ marginLeft: '4px' }}>{badge}</div>}
         </div>
 
-        {/* Chevron */}
         <svg
           width="16"
           height="16"
           viewBox="0 0 16 16"
           fill="none"
+          aria-hidden="true"
           style={{
             flexShrink: 0,
             color: 'var(--gold)',
@@ -86,18 +94,13 @@ export function CollapsibleCard({
         </svg>
       </button>
 
-      {/* Collapsible body — grid trick for smooth height animation */}
       <div style={{
         display: 'grid',
         gridTemplateRows: open ? '1fr' : '0fr',
         transition: 'grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
       }}>
         <div style={{ overflow: 'hidden' }}>
-          <div style={{
-            padding: '0 24px 24px',
-            borderTop: '1px solid var(--border)',
-            paddingTop: '20px',
-          }}>
+          <div style={{ padding: '20px 24px 24px' }}>
             {children}
           </div>
         </div>

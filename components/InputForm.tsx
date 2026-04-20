@@ -14,6 +14,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
   const [contactName, setContactName] = useState('')
   const [contactTitle, setContactTitle] = useState('')
   const [error, setError] = useState('')
+  const [btnHovered, setBtnHovered] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -30,13 +31,13 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
   }
 
   const fields = [
-    { label: 'Company', value: company, setter: setCompany, required: true, placeholder: 'e.g. Salesforce' },
-    { label: 'Contact', value: contactName, setter: setContactName, required: false, placeholder: 'Full name (optional)' },
-    { label: 'Title', value: contactTitle, setter: setContactTitle, required: false, placeholder: 'Their role (optional)' },
+    { id: 'company', label: 'Company', value: company, setter: setCompany, required: true, placeholder: 'e.g. Salesforce' },
+    { id: 'contact', label: 'Contact', value: contactName, setter: setContactName, required: false, placeholder: 'Full name (optional)' },
+    { id: 'title', label: 'Title', value: contactTitle, setter: setContactTitle, required: false, placeholder: 'Their role (optional)' },
   ]
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+    <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '560px', margin: '0 auto' }}>
       <p style={{
         fontFamily: 'var(--font-display)',
         fontSize: '11px',
@@ -83,28 +84,35 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
         borderTop: '3px solid var(--gold)',
         padding: '20px',
       }}>
-        {fields.map(({ label, value, setter, required, placeholder }, i) => (
-          <div key={label} style={{
+        {fields.map(({ id, label, value, setter, required, placeholder }, i) => (
+          <div key={id} style={{
             display: 'grid',
             gridTemplateColumns: '70px 1fr',
             alignItems: 'center',
             borderBottom: i < fields.length - 1 ? '1px dashed var(--border-dashed)' : 'none',
             padding: '10px 0',
           }}>
-            <span style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '8px',
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-              color: 'var(--gold)',
-            }}>
+            <label
+              htmlFor={id}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '8px',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'var(--gold)',
+                cursor: 'text',
+              }}
+            >
               {label}{required ? ' *' : ''}
-            </span>
+            </label>
             <input
+              id={id}
+              name={id}
               type="text"
               value={value}
               onChange={e => setter(e.target.value)}
               placeholder={placeholder}
+              aria-required={required}
               style={{
                 background: 'transparent',
                 border: 'none',
@@ -115,16 +123,18 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
                 color: value ? 'var(--ink)' : 'var(--muted)',
                 width: '100%',
               }}
+              onFocus={e => { e.currentTarget.style.borderBottom = '1px solid var(--gold)' }}
+              onBlur={e => { e.currentTarget.style.borderBottom = 'none' }}
             />
           </div>
         ))}
       </div>
 
       {error && (
-        <p style={{
+        <p role="alert" style={{
           fontFamily: 'var(--font-body)',
           fontSize: '11px',
-          color: '#c0392b',
+          color: '#a0392b',
           marginTop: '10px',
           textAlign: 'center',
         }}>
@@ -136,17 +146,20 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
         <button
           type="submit"
           disabled={isLoading}
+          onMouseEnter={() => setBtnHovered(true)}
+          onMouseLeave={() => setBtnHovered(false)}
           style={{
-            padding: '11px 36px',
-            background: 'transparent',
+            padding: '12px 40px',
+            background: btnHovered && !isLoading ? 'var(--gold)' : 'transparent',
             border: '1px solid var(--gold)',
-            color: isLoading ? 'var(--muted)' : 'var(--gold)',
+            color: btnHovered && !isLoading ? 'var(--cream)' : isLoading ? 'var(--muted)' : 'var(--gold)',
             fontFamily: 'var(--font-body)',
             fontSize: '9px',
             letterSpacing: '3px',
             textTransform: 'uppercase',
             cursor: isLoading ? 'not-allowed' : 'pointer',
-            transition: 'all 0.2s',
+            transition: 'background 0.2s ease, color 0.2s ease',
+            borderColor: isLoading ? 'var(--muted)' : 'var(--gold)',
           }}
         >
           {isLoading ? 'Preparing your brief…' : 'Request Brief'}

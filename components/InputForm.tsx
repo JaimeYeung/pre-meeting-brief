@@ -41,44 +41,6 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
 
   return (
     <div style={{ width: '100%' }}>
-      {/* Hero photo block — taller, more editorial */}
-      <div style={{
-        width: '100%',
-        height: '160px',
-        background: 'linear-gradient(135deg, var(--cream-dark) 0%, #c8b89a 60%, #b0a07a 100%)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        padding: 'var(--space-5)',
-        marginBottom: 'var(--space-6)',
-        position: 'relative',
-      }}>
-        <span style={{
-          position: 'absolute',
-          top: 'var(--space-4)',
-          right: 'var(--space-4)',
-          background: 'var(--accent)',
-          color: '#fff',
-          fontFamily: 'var(--font-body)',
-          fontSize: 'var(--text-xs)',
-          fontWeight: 500,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          padding: '4px 10px',
-        }}>
-          AI-powered
-        </span>
-        <p style={{
-          fontFamily: 'var(--font-display)',
-          fontStyle: 'italic',
-          fontSize: 'var(--text-base)',
-          color: 'rgba(42,37,32,0.55)',
-          letterSpacing: '0.01em',
-        }}>
-          prepare like a professional
-        </p>
-      </div>
-
       <form onSubmit={handleSubmit}>
         <p style={{
           fontFamily: 'var(--font-body)',

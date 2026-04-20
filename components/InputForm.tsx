@@ -41,6 +41,14 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
 
   return (
     <div style={{ width: '100%' }}>
+      {/* Hero photo block */}
+      <div style={{
+        width: '100%',
+        height: '160px',
+        background: 'linear-gradient(135deg, var(--cream-dark) 0%, #c8b89a 60%, #b0a07a 100%)',
+        marginBottom: 'var(--space-6)',
+      }} />
+
       <form onSubmit={handleSubmit}>
         <p style={{
           fontFamily: 'var(--font-body)',

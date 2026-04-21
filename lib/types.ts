@@ -4,6 +4,7 @@ export interface BriefInput {
   company: string
   contactName?: string
   contactTitle?: string
+  ourProduct?: string
 }
 
 export interface CompanySnapshotData {

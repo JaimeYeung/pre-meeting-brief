@@ -9,6 +9,7 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false)
   const [brief, setBrief] = useState<BriefResponse | null>(null)
   const [inputMode, setInputMode] = useState<GenerateApiResponse['inputMode'] | null>(null)
+  const [lastInput, setLastInput] = useState<BriefInput | null>(null)
   const [apiError, setApiError] = useState<string | null>(null)
   const briefRef = useRef<HTMLDivElement>(null)
 
@@ -34,6 +35,7 @@ export default function Page() {
       const response = data as GenerateApiResponse
       setBrief(response.brief)
       setInputMode(response.inputMode)
+      setLastInput(input)
       setTimeout(() => briefRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
     } catch {
       setApiError('Network error. Please check your connection and try again.')
@@ -67,7 +69,14 @@ export default function Page() {
       )}
 
       <div ref={briefRef} style={{ width: '100%' }}>
-        <BriefDisplay brief={brief} inputMode={inputMode} isLoading={isLoading} />
+        <BriefDisplay
+          brief={brief}
+          inputMode={inputMode}
+          isLoading={isLoading}
+          company={lastInput?.company}
+          contactName={lastInput?.contactName}
+          contactTitle={lastInput?.contactTitle}
+        />
       </div>
     </main>
   )

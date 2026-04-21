@@ -32,6 +32,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     company: body.company.trim(),
     contactName: body.contactName?.trim() || undefined,
     contactTitle: body.contactTitle?.trim() || undefined,
+    ourProduct: body.ourProduct?.trim() || undefined,
   }
 
   const tavilyKey = process.env.TAVILY_API_KEY ?? ''

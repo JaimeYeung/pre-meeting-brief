@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import type { BriefResponse, GenerateApiResponse } from '@/lib/types'
 import { CompanySnapshot } from './modules/CompanySnapshot'
 import { IcpScore } from './modules/IcpScore'
@@ -5,11 +8,15 @@ import { PersonaIntel } from './modules/PersonaIntel'
 import { MeetingPrep } from './modules/MeetingPrep'
 import { ObjectionHandling } from './modules/ObjectionHandling'
 import { SkeletonCard } from './ui/SkeletonCard'
+import { toMarkdown } from '@/lib/exportMarkdown'
 
 interface BriefDisplayProps {
   brief: BriefResponse | null
   inputMode: GenerateApiResponse['inputMode'] | null
   isLoading: boolean
+  company?: string
+  contactName?: string
+  contactTitle?: string
 }
 
 const INPUT_MODE_NOTES: Record<string, string> = {
@@ -49,7 +56,17 @@ function MissingModule({ label, note }: { label: string; note: string }) {
   )
 }
 
-export function BriefDisplay({ brief, inputMode, isLoading }: BriefDisplayProps) {
+export function BriefDisplay({ brief, inputMode, isLoading, company = '', contactName, contactTitle }: BriefDisplayProps) {
+  const [copied, setCopied] = useState(false)
+
+  async function handleExport() {
+    if (!brief) return
+    const md = toMarkdown(brief, company, contactName, contactTitle)
+    await navigator.clipboard.writeText(md)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   if (!isLoading && !brief) return null
 
   return (
@@ -84,25 +101,54 @@ export function BriefDisplay({ brief, inputMode, isLoading }: BriefDisplayProps)
             <IcpScore data={brief.icpScore} />
             {brief.personaIntel
               ? <PersonaIntel data={brief.personaIntel} />
-              : <MissingModule label="Persona & Competitive Intel" note="Add a contact name and title to unlock persona analysis." />
+              : <MissingModule label="Persona & Competitive Intel" note="Add a contact name or title to unlock persona analysis." />
             }
             <MeetingPrep data={brief.meetingPrep} />
             {brief.objectionHandling
               ? <ObjectionHandling data={brief.objectionHandling} />
-              : <MissingModule label="Objection Handling" note="Add a contact name and title to unlock objection handling." />
+              : <MissingModule label="Objection Handling" note="Add a contact name or title to unlock objection handling." />
             }
           </div>
-          <p style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: 'var(--text-xs)',
-            color: 'var(--muted)',
-            textAlign: 'center',
-            letterSpacing: '0.1em',
-            marginTop: 'var(--space-4)',
+
+          {/* Footer */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: 'var(--space-6)',
             marginBottom: 'var(--space-16)',
+            paddingTop: 'var(--space-4)',
+            borderTop: '1px solid var(--border)',
           }}>
-            Generated {new Date(brief.generatedAt).toLocaleString()}
-          </p>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: 'var(--text-xs)',
+              color: 'var(--muted)',
+              letterSpacing: '0.1em',
+            }}>
+              Generated {new Date(brief.generatedAt).toLocaleString()}
+            </p>
+            <button
+              onClick={handleExport}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-2)',
+                background: 'transparent',
+                border: '1px solid var(--border)',
+                padding: 'var(--space-2) var(--space-4)',
+                fontFamily: 'var(--font-body)',
+                fontSize: 'var(--text-xs)',
+                letterSpacing: '0.1em',
+                color: copied ? 'var(--accent)' : 'var(--muted)',
+                cursor: 'pointer',
+                transition: 'color 0.2s ease, border-color 0.2s ease',
+                borderColor: copied ? 'var(--accent)' : 'var(--border)',
+              }}
+            >
+              {copied ? '✓ Copied' : 'Export as Markdown'}
+            </button>
+          </div>
         </>
       ) : null}
     </div>

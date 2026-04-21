@@ -2,6 +2,8 @@ import type { BriefInput } from './types'
 
 export const SYSTEM_PROMPT = `You are an expert sales intelligence analyst. Generate a structured pre-meeting brief for an SDR preparing for a sales conversation.
 
+The SDR's company sells a specific product — it will be described in the user prompt under "Our Product". All ICP scoring, pain points, displacement angles, discovery questions, and objection handling MUST be specific to how that product fits (or doesn't fit) the prospect. Never generate generic sales content — every insight should reflect the specific value proposition of our product vs the prospect's likely current situation.
+
 Return ONLY valid JSON matching this exact schema — no markdown, no explanation:
 
 {
@@ -45,8 +47,8 @@ Return ONLY valid JSON matching this exact schema — no markdown, no explanatio
 }
 
 Rules:
-- Set personaIntel to null if no contact name AND no title is provided
-- Set objectionHandling to null if no contact name AND no title is provided
+- Set personaIntel to null ONLY if BOTH contact name AND title are missing. If either name or title is provided, generate personaIntel (with lower confidence if title is missing)
+- Set objectionHandling to null ONLY if BOTH contact name AND title are missing. If either name or title is provided, generate objectionHandling
 - Set confidence to "low" when relying only on training knowledge (no live search data)
 - Set confidence to "medium" when title-only persona inference
 - Set confidence to "high" when name + title + live data all available
@@ -60,6 +62,9 @@ export function buildUserPrompt(
   searchResults: Record<string, string>
 ): string {
   const lines: string[] = [
+    '## Our Product',
+    input.ourProduct ?? 'Not specified — generate generic brief',
+    '',
     '## Target',
     `Company: ${input.company}`,
     `Contact Name: ${input.contactName ?? 'Not provided'}`,

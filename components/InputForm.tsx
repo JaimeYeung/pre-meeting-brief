@@ -12,6 +12,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
   const [company, setCompany] = useState('')
   const [contactName, setContactName] = useState('')
   const [contactTitle, setContactTitle] = useState('')
+  const [ourProduct, setOurProduct] = useState('An enterprise AI platform that connects a company\'s internal tools and data so employees can quickly find information, get answers, and automate work — starting with workplace search and expanding into AI assistants and agents.')
   const [error, setError] = useState('')
   const [btnHovered, setBtnHovered] = useState(false)
   const [btnActive, setBtnActive] = useState(false)
@@ -28,6 +29,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
       company: company.trim(),
       contactName: contactName.trim() || undefined,
       contactTitle: contactTitle.trim() || undefined,
+      ourProduct: ourProduct.trim() || undefined,
     })
   }
 
@@ -95,7 +97,7 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
                 fontSize: 'var(--text-xs)',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: focusedField === id ? 'var(--accent)' : 'var(--muted)',
+                color: focusedField === id ? 'var(--accent)' : 'var(--ink-light)',
                 width: '80px',
                 flexShrink: 0,
                 fontWeight: 500,
